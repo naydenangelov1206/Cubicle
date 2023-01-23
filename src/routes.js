@@ -1,19 +1,16 @@
+// const express = require("express");
+// const Router = express.Router;
+// const router = Router();
 //? Modular routes are
+const router = require("express").Router();
+
 const cubeController = require("./controllers/cubeController");
-//? Shorthand const router = require("express").Router
-const express = require("express");
-const Router = express.Router;
+const homeController = require("./controllers/homeController");
 
-const router = Router();
-
-router.get("/", (req, res) => {
-  res.render("index");
-});
-
-router.get("/about", (req, res) => {
-  res.render("about");
-});
+router.get("/", homeController.getHomePage);
+router.get("/about", homeController.getAboutPage);
 
 router.get("create", cubeController.getCreateCube);
+router.post("/create", cubeController.postCreateCube);
 
 module.exports = router;

@@ -10,6 +10,7 @@ setupViewEngine(app);
 
 //? It looks if they are any files in the public folder and reads them
 app.use(express.static("./src/public"));
+app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
 app.listen(config.PORT, () =>
