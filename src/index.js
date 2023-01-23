@@ -1,10 +1,14 @@
 const express = require("express");
 
-const config = require("./config");
+//? When a folder is required it automatically calls the index
+const config = require("./config/config");
+const setupViewEngine = require("./config/viewEngine");
+
 const app = express();
+setupViewEngine(app);
 
 app.get("/", (req, res) => {
-  res.send("Home");
+  res.render("home");
 });
 
 app.listen(config.PORT, () =>
